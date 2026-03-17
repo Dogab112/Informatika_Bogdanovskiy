@@ -1,10 +1,13 @@
-list_players = ["Маша", "Петя", "Саша", "Оля", "Кирилл", "Коля"]
+salary = 5000  # Ежемесячная зарплата
+spend = 6000  # Траты за первый месяц
+months = 10  # Количество месяцев, которое планируется протянуть без долгов
+increase = 0.03  # Ежемесячный рост цен
 
-# индекс середины
-middle_index = len(list_players) // 2
-
-first_team = list_players[:middle_index]
-second_team = list_players[middle_index:]
-
-print(first_team)
-print(second_team)
+money_capital = 0
+count = 0
+while count < months:
+    if spend > salary: # проверяю больше ли траты, чем зараплата, если да, то эта сумма должна быть в подушке
+        money_capital = money_capital + (spend - salary) # прибавил эту сумму в подушку
+    spend = spend + spend * increase # индексирую траты
+    count += 1 # это просто счетчик наших действий, чтобы он не превышал количество месяцев
+print(f"Подушка безопасности, чтобы протянуть {months} месяцев без долгов:", round(money_capital))
